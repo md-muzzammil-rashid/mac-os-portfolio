@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Dock from "@/components/Dock";
+import MenuBar from "@/components/MenuBar";
+import ApplicationHolder from "@/components/ApplicationHolder";
+import Finder from "@/components/Finder";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +32,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          <div className="relative" id="home">
+          <MenuBar/>
+          <ApplicationHolder active>
+            {true&&<Finder>
+
         {children}
+            </Finder>}
+      </ApplicationHolder>  
+            <Dock/>
+        </div>
       </body>
     </html>
   );
